@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expense Tracker</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Expense Tracker</h1>
+        <a href="/add" class="btn">Add Expense</a>
+        <ul class="expense-list">
+            {% for expense in expenses %}
+            <li class="expense-item">
+                <h3>{{ expense.category }} - ${{ expense.amount }}</h3>
+                <p>Date: {{ expense.date }}</p>
+                <a href="/delete/{{ expense._id }}" class="btn delete-btn">Delete</a>
+            </li>
+            {% endfor %}
+        </ul>
+        <div class="total">
+            <h2>Total: ${{ total }}</h2>
+        </div>
+    </div>
+</body>
+</html>

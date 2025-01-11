@@ -1,0 +1,33 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+    <h1>{{ post.title }}</h1>
+    <p>{{ post.content }}</p>
+    <p>Written by: {{ post.author }}</p>
+    <p>Date: {{ post.date }}</p>
+    {% if 'username' in session and post.author == session['username'] %}
+        <a href="/edit_post/{{ post._id }}" class="button">Edit</a> |
+        <a href="/delete_post/{{ post._id }}" class="button">Delete</a>
+    {% endif %}
+{% endblock %}
+
+{% block extra_styles %}
+    <style>
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .button {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 4px;
+            text-decoration: none;
+        }
+
+        .button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+{% endblock %}
